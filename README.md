@@ -5,6 +5,8 @@ A lender enters the deal terms; Halflife simulates thousands of correlated marke
 the probability of loss, expected loss, covenant breaches, named stress scenarios, where the loss
 comes from, which structuring levers fix it, and a draft credit memo.
 
+**Live demo:** https://mcardon436-byte.github.io/halflife/ — click "Play demo" for a narrated two-minute walkthrough.
+
 ## Run it
 
 ```bash
