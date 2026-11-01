@@ -1,0 +1,255 @@
+/* ==========================================================================
+   Design system Maxime : tokens
+   Source unique de toutes les valeurs. Aucune valeur en dur dans les composants :
+   on référence toujours un token par son rôle (--primary, --text, --border…),
+   jamais par sa teinte.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400&display=swap");
+
+:root {
+  color-scheme: light;
+
+  /* ---- Échelles brutes (ne pas utiliser directement dans les composants) ---- */
+  --carmin-50:  #FFF2F0;
+  --carmin-100: #FFE2DF;
+  --carmin-200: #FEC6C2;
+  --carmin-300: #FE9B95;
+  --carmin-400: #EB6361;
+  --carmin-500: #D02A36;
+  --carmin-600: #A7001E; /* couleur principale */
+  --carmin-700: #880016;
+  --carmin-800: #6A0612;
+  --carmin-900: #4E080D;
+  --carmin-950: #2F0406;
+
+  /* Neutres : clairs teintés pistache, foncés teintés prune */
+  --neutre-50:  #FAFBF5;
+  --neutre-100: #F6F8EE;
+  --neutre-200: #ECEEE2;
+  --neutre-300: #E4E6D9;
+  --neutre-350: #D6D9C9;
+  --neutre-400: #AAA2A6;
+  --neutre-500: #867D82;
+  --neutre-600: #6B6266;
+  --neutre-700: #574C52;
+  --neutre-800: #3D3138;
+  --neutre-900: #2B1D24;
+  --neutre-950: #1E0F1C;
+
+  /* ---- Rôles : ce que les composants utilisent ---- */
+  --bg:               var(--neutre-100);   /* fond de page, pistache léger */
+  --bg-subtle:        var(--neutre-50);    /* survol discret, zones calmes */
+  --surface:          #FFFFFF;             /* cartes cliquables, champs, menus, fenêtres */
+  --surface-sunken:   var(--neutre-200);   /* fond d'une piste (barre de progression), zone en retrait */
+  --border:           var(--neutre-300);   /* bordure par défaut, 1 px */
+  --border-strong:    var(--neutre-350);   /* bordure au survol */
+  --divider:          #EEF0E6;             /* séparateurs de liste */
+
+  --text:             var(--neutre-950);   /* titres, texte principal (17:1) */
+  --text-secondary:   var(--neutre-600);   /* descriptions, métadonnées (5,5:1) */
+  --text-placeholder: var(--neutre-500);   /* textes indicatifs et désactivés uniquement */
+
+  --primary:          var(--carmin-600);   /* action, liens, état actif, progression */
+  --primary-hover:    var(--carmin-700);
+  --primary-active:   var(--carmin-800);
+  --primary-soft:     var(--carmin-50);    /* fond léger d'un élément sélectionné */
+  --primary-soft-text:var(--carmin-800);
+  --on-primary:       #FFFFFF;
+  --focus-ring:       var(--carmin-600);
+
+  --danger:           #B54708;  /* rouge-orangé, volontairement distinct du carmin */
+  --danger-bg:        #FDF0E7;
+  --on-danger:        #FFFFFF;
+  --success:          #2E7D4F;
+  --success-bg:       #EAF4EC;
+  --warning:          #A15C07;
+  --warning-bg:       #FBF1E0;
+  /* « info » reste neutre : --text sur --surface avec --border */
+
+  /* Pistache : signature des pages vitrines uniquement, jamais dans une app */
+  --pistache-signature: #E2E9C0;  /* grands aplats vitrine, avec grain */
+  --pistache-vive:      #7AA95C;  /* illustrations vitrine uniquement */
+
+  /* ---- Typographie ---- */
+  --font-sans:  "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Source Serif 4", ui-serif, Georgia, serif; /* voix éditoriale occasionnelle */
+  --font-mono:  ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+
+  /* Échelle « encore plus sobre » ; les grands niveaux se réduisent sur mobile */
+  --text-hero:    clamp(2rem, 1.6rem + 2vw, 2.5rem);     /* 32 → 40 px, vitrine seulement */
+  --text-display: clamp(1.75rem, 1.55rem + 1vw, 2rem);   /* 28 → 32 px, vitrine seulement */
+  --text-h1:      clamp(1.5rem, 1.45rem + 0.3vw, 1.625rem); /* 24 → 26 px */
+  --text-h2:      1.3125rem;  /* 21 px : titre de page d'app, sections */
+  --text-h3:      1.125rem;   /* 18 px, graisse 500 */
+  --text-lead:    1.125rem;   /* 18 px, graisse 400 : chapeau d'article */
+  --text-body:    1rem;       /* 16 px */
+  --text-small:   0.875rem;   /* 14 px : listes, métadonnées, interface dense */
+  --text-caption: 0.75rem;    /* 12 px : libellés, majuscules espacées */
+
+  --leading-hero: 1.0;
+  --leading-display: 1.05;
+  --leading-h1: 1.12;
+  --leading-h2: 1.2;
+  --leading-h3: 1.3;
+  --leading-body: 1.6;
+  --leading-small: 1.5;
+  --leading-caption: 1.4;
+
+  --tracking-hero: -0.04em;
+  --tracking-display: -0.035em;
+  --tracking-h1: -0.025em;
+  --tracking-h2: -0.015em;
+  --tracking-h3: -0.01em;
+  --tracking-body: 0;
+  --tracking-small: 0.005em;
+  --tracking-caps: 0.08em;  /* obligatoire sur tout texte en majuscules */
+
+  --measure: 65ch;  /* largeur maximale d'un paragraphe */
+
+  /* ---- Espacements (multiples de 4, en rem pour suivre la taille de texte) ---- */
+  --space-1: 0.25rem; /*  4 */
+  --space-2: 0.5rem;  /*  8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem;    /* 16 */
+  --space-5: 1.5rem;  /* 24 */
+  --space-6: 2rem;    /* 32 */
+  --space-7: 3rem;    /* 48 */
+  --space-8: 4rem;    /* 64 */
+  --space-9: 6rem;    /* 96 */
+
+  /* Densité compacte */
+  --gap-inline:      var(--space-2); /* entre éléments d'une même ligne (boutons, icône + texte) */
+  --gap-related:     var(--space-3); /* titre → texte, libellé → champ */
+  --gap-block:       var(--space-4); /* entre blocs d'une même section */
+  --gap-section-app: var(--space-6); /* entre sections dans une app */
+  --gap-section-site:clamp(var(--space-7), 6vw, var(--space-8)); /* vitrine : 48 → 64 */
+  --row-padding:     var(--space-2); /* hauteur des lignes de liste (+ zone tactile 44 px sur mobile) */
+  --page-padding:    clamp(var(--space-4), 4vw, var(--space-6));
+  --content-max:     72rem; /* 1152 px */
+
+  --hit-min: 44px;  /* zone tactile minimale sur mobile */
+
+  /* ---- Formes : doux et pilules ---- */
+  --radius-pill:   999px; /* boutons, badges, puces */
+  --radius-sm:     4px;   /* très petits éléments (cases à cocher) */
+  --radius-item:   8px;   /* lignes de menu, éléments imbriqués */
+  --radius-input:  8px;   /* champs */
+  --radius-card:   12px;  /* cartes cliquables, menus, images */
+  --radius-dialog: 16px;  /* fenêtres, grands panneaux */
+  --border-width:  1px;
+
+  /* ---- Ombres : uniquement pour ce qui flotte, teintées prune ---- */
+  --shadow-popover: 0 8px 24px rgb(30 15 28 / 0.10), 0 2px 6px rgb(30 15 28 / 0.06);
+  --shadow-dialog:  0 16px 40px rgb(30 15 28 / 0.14), 0 4px 10px rgb(30 15 28 / 0.06);
+  --shadow-toast:   0 8px 20px rgb(30 15 28 / 0.18);
+
+  /* ---- Matières ---- */
+  /* Tactile : bouton principal et bouton actif d'un groupe */
+  --tactile-bg:      linear-gradient(180deg, #B8142F, var(--carmin-600));
+  --tactile-bg-hover:linear-gradient(180deg, #A50E28, var(--carmin-700));
+  --tactile-shadow:  inset 0 1px 0 rgb(255 255 255 / 0.25), 0 1px 2px rgb(30 15 28 / 0.25), 0 4px 10px rgb(167 0 30 / 0.22);
+  --tactile-shadow-hover: inset 0 1px 0 rgb(255 255 255 / 0.30), 0 2px 4px rgb(30 15 28 / 0.25), 0 8px 18px rgb(167 0 30 / 0.28);
+  --tactile-shadow-pressed: inset 0 2px 4px rgb(0 0 0 / 0.25);
+
+  /* Verre : barre de navigation fixe au-dessus d'une image ou d'un contenu coloré uniquement */
+  --glass-bg:     rgb(246 248 238 / 0.72);
+  --glass-border: rgb(255 255 255 / 0.5);
+  --glass-filter: blur(14px) saturate(140%);
+
+  /* Grain : grands aplats pistache des pages vitrines uniquement */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  --grain-opacity: 0.18;
+
+  /* ---- Mouvement : personnalité « Vivant » (règles d'Emil Kowalski) ---- */
+  --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);    /* entrées, sorties, réactions */
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);   /* déplacement à l'écran */
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);    /* tiroirs, notifications */
+
+  --dur-press:   140ms;
+  --dur-hover:   160ms;
+  --dur-tooltip: 150ms;
+  --dur-menu:    180ms;
+  --dur-dialog:  240ms;
+  --dur-toast:   260ms;
+  --dur-reveal:  360ms;  /* arrivée de contenu, vitrine */
+  --stagger:     50ms;   /* cascade entre éléments d'une liste */
+
+  --scale-press:       0.97;
+  --scale-menu-from:   0.95;
+  --scale-dialog-from: 0.96;
+  --rise-dialog:       6px;
+  --rise-reveal:       8px;
+}
+
+/* ---- Mode sombre : neutres dédiés, jamais une simple inversion ---- */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:               #181214;
+  --bg-subtle:        #1D1619;
+  --surface:          #211A1D;
+  --surface-sunken:   #2A2226;
+  --border:           #3A3035;
+  --border-strong:    #4A3F45;
+  --divider:          #2E262A;
+
+  --text:             #F2EEE8;
+  --text-secondary:   #B3A9AD;
+  --text-placeholder: #8A8085;
+
+  --primary:          #E35D6A;  /* carmin éclairci pour rester lisible */
+  --primary-hover:    #EA7883;
+  --primary-active:   #D94B59;
+  --primary-soft:     rgb(227 93 106 / 0.14);
+  --primary-soft-text:#F4A3AB;
+  --on-primary:       #1E0F1C;  /* texte foncé sur le carmin clair */
+  --focus-ring:       #E35D6A;
+
+  --danger:           #F2795A;
+  --danger-bg:        rgb(242 121 90 / 0.14);
+  --on-danger:        #1E0F1C;
+  --success:          #5FB87A;
+  --success-bg:       rgb(95 184 122 / 0.14);
+  --warning:          #E8A33D;
+  --warning-bg:       rgb(232 163 61 / 0.14);
+
+  --shadow-popover: 0 8px 24px rgb(0 0 0 / 0.40), 0 2px 6px rgb(0 0 0 / 0.30);
+  --shadow-dialog:  0 16px 40px rgb(0 0 0 / 0.50), 0 4px 10px rgb(0 0 0 / 0.30);
+  --shadow-toast:   0 8px 20px rgb(0 0 0 / 0.45);
+
+  --tactile-bg:      linear-gradient(180deg, #E86B77, #E35D6A);
+  --tactile-bg-hover:linear-gradient(180deg, #EE8590, #EA7883);
+  --tactile-shadow:  inset 0 1px 0 rgb(255 255 255 / 0.25), 0 1px 2px rgb(0 0 0 / 0.4);
+  --tactile-shadow-hover: inset 0 1px 0 rgb(255 255 255 / 0.3), 0 2px 6px rgb(0 0 0 / 0.45);
+
+  --glass-bg:     rgb(24 18 20 / 0.72);
+  --glass-border: rgb(255 255 255 / 0.08);
+}
+
+/* ---- Base ---- */
+html {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+}
+body { font-size: var(--text-body); line-height: var(--leading-body); }
+:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; border-radius: inherit; }
+button, a, input, select, textarea, [role="button"] { touch-action: manipulation; }
+.chiffres, td, .stat { font-variant-numeric: tabular-nums; }
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; max-width: var(--measure); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-property: opacity, color, background-color, border-color !important;
+  }
+}
